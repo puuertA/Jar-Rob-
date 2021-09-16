@@ -5,14 +5,10 @@ exports.run = (client, message, args) => {
 var descuteis = [
   `***j!avatar***
   - envia o avatar do usuário mencionado como uma imagem\n
-  ***j!emoji***
-  - faz o bot enviar um emoji\n
   ***j!falar***
   - faz o falar por você\n
   ***j!limpar***
   - limpa o chat até 99 mensagens\n
-  ***j!tempo***
-  - mostra quanto tempo o bot esta funcionando\n
   `,
 ];
 
