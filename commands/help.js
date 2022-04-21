@@ -6,9 +6,11 @@ var descuteis = [
   `***j!avatar***
   - envia o avatar do usuário mencionado como uma imagem\n
   ***j!falar***
-  - faz o falar por você\n
+  - faz o bot falar por você\n
   ***j!limpar***
   - limpa o chat até 99 mensagens\n
+  ***j!site***
+  - envia o link do site do bot no canal atual\n
   `,
 ];
 
@@ -17,8 +19,6 @@ var descfunny = [
   - abraça o usuário mencionado\n
   ***j!agredir***
   - amassa no soco o usuário mencionado\n
-  ***j!falar***
-  - faz o falar por você\n
   ***j!beijar***
   - beija o usuário mencionado\n
   ***j!coinflip***
@@ -28,13 +28,13 @@ var descfunny = [
 ];
 
 var descmusic = [
-  `***j!play***
+  `***j!tocar***
   - começa a reproduzir música no canal de voz atual\n
-  ***j!skip***
+  ***j!pular***
   - pula para a próxima música da queue\n
-  ***j!stop***
+  ***j!parar***
   - para de reproduzir e desconecta o bot do canal de voz\n
-  ***j!queue***
+  ***j!listar***
   - mostra a lista de músicas a ser reproduzida\n
   `,
 ];

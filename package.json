@@ -2,18 +2,33 @@
   "name": "jare-robo",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.1.0",
+    "discord.js": "^12.5.3",
     "express": "^4.17.1",
-    "ytdl-core": "^4.9.1",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.4.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "node.js": "0.0.1-security",
+    "opusscript": "0.0.8",
+    "ytdl": "^1.4.1",
+    "ytdl-core": "^4.11.0",
+    "ytpl": "^2.2.3",
     "ytsearcher": "^1.2.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node": "^12.16.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puuertA/Jar-Rob-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/puuertA/Jar-Rob-/issues"
+  },
+  "homepage": "https://github.com/puuertA/Jar-Rob-#readme",
   "description": ""
 }
