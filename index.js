@@ -8,8 +8,6 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT); // Recebe solicitações que o deixa online
 
-
-
 const Discord = require("discord.js"); //Conexão com a livraria Discord.js
 const client = new Discord.Client(); //Criação de um novo Client
 client.commands = new Discord.Collection();
@@ -23,103 +21,12 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', message => {
-  if (message.content.startsWith('foda-se') || message.content.startsWith('fodase') || message.content.startsWith('fodas') || message.content.startsWith('FODASE') || message.content.startsWith('foudaci')) {
-    message.reply('**🖕🖕🖕🖕🖕🖕🖕🖕🖕 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFODASE VOCE VA TOMANO CU 🖕🖕🖕🖕🖕🖕🖕🖕🖕🖕🖕🖕**');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('autotune')) {
-    message.reply('**https://www.youtube.com/watch?v=jt9LlHXGckg**');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('porta')) {
-    message.reply('**mó feião esse cara mané** 🤪');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('perez')) {
-    message.reply('**o nivel fico muito bom porque eu não to entendendo mais nada, muie registrada da nagai** 😕🤔');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('amanda')) {
-    message.reply('**a maior responsável por call do soninho br 2021 atualizado ok google pesquisar**💤😴');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('nagai')) {
-    message.reply('**hackeou a vida e sabe tocar, cantar ,desenhar, dançar um break e é muie registrada da perez**🎨🎵');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('kaue')) {
-    message.reply('**um dos mais capudo do frifas** 💀');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('davi')) {
-    message.reply('**O CARA QUEBRA COM COCÔ VEI** 💩');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('bia')) {
-    message.reply('**dizem que a bia sacou a glo pra vitoria e ela desapareceu** 🔫');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('mel')) {
-    message.reply('**bzzzzzz, muito gostosa (de acordo com ela mesma e várias pessoas que concordam com ela) essa dai bleh 🐝🍯**');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('cat')) {
-    message.reply('**comedora oficial de mel 🍯 e mestra de rpg de pootaria 🧙‍♂️**');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('eron')) {
-    message.reply('**outro dos mais capudos do frifas** 💀');
-  }
-});
-
-
-client.on('message', message => {
-  if (message.content.startsWith('claro')) {
-    message.reply('**dizem que é uma uva concord ou o hipocampo do paraguay** 🍇☄️');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('brandao')) {
-    message.reply('🕳🕳 EI VOCÊ SABIA? **SABOTAGEM AO CONTRARIO É MEGATOBAS?** 🕳🕳');
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith('freitas')) {
-    message.reply('**essa cara é pintudo,um dos mais pirocudos de massachusets** 🍆');
-  }
-});
-
-
-client.on('message', message => {
   if (message.author.bot) return;
   if (message.channel.type == 'dm') return;
   if (!message.content.toLowerCase().startsWith(config.prefix.toLowerCase())) return;
   if (message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return;
 
+  // comandos
   const args = message.content
     .trim().slice(config.prefix.length)
     .split(/ +/g);
@@ -147,8 +54,13 @@ client.on("ready", () => {
   client.user
     .setStatus("dnd")
     .catch(console.error);
-  console.log("Estou Online!")
+  console.log("Status: Online")
 });
+client.on('message', message => {
+  if (message.content.startsWith(`nautilus`) || message.content.startsWith(`NAUTILUS`)) {
+    message.reply("HAHAHAHAHAHAHAAHAHAHAHAHAHAHAHA", { files: ["https://www.nicepng.com/png/full/132-1323703_makoa-paladins-png-nautilus-lol.png"] });;
+  }
+})
 
 const { executionAsyncResource } = require('async_hooks');
 const ytdl = require('ytdl-core');
@@ -163,17 +75,16 @@ const searcher = new YTSearcher({
 const queue = new Map();
 
 client.on("ready", () => {
-  console.log("I am online!")
+  // console.log("Status: Online")
 })
 
 client.on("message", async (message) => {
   const prefix = `${config.prefix}`;
-
+ 
   const serverQueue = queue.get(message.guild.id);
-
+ 
   const args = message.content.slice(prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase();
-  
   switch (command) {
     case 'tocar':
       execute(message, serverQueue);
@@ -192,7 +103,7 @@ client.on("message", async (message) => {
   async function execute(message, serverQueue) {
     let vc = message.member.voice.channel;
     if (!vc) {
-      return message.channel.send("⚠️ Por favor entre em um **canal de voz** primeiro! ⚠️");
+      return message.channel.send(`⚠️ Por favor ${message.author}, entre em um **canal de voz** primeiro! ⚠️`);
     } else {
       let result = await searcher.search(args.join(" "), { type: "video" })
       const songInfo = await ytdl.getInfo(result.first.url)
@@ -226,7 +137,7 @@ client.on("message", async (message) => {
         }
       } else {
         serverQueue.songs.push(song);
-        return message.channel.send(`✅ A música ***${song.title}*** foi adicionado ao queue! ✅`);
+        return message.channel.send(`✅ A música: ***${song.title}*** foi adicionada ao queue! ✅`);
       }
     }
   }
@@ -243,31 +154,38 @@ client.on("message", async (message) => {
         serverQueue.songs.shift();
         play(guild, serverQueue.songs[0]);
       })
-    serverQueue.txtChannel.send(`🎵 Tocando agora ***${serverQueue.songs[0].title}*** 🎵`)
+    serverQueue.txtChannel.send(`🎵 ***Tocando agora:*** ${serverQueue.songs[0].title} 🎵`)
   }
   function stop(message, serverQueue) {
     if (!message.member.voice.channel)
-      return message.channel.send("⚠️ Você precisa entrar em um canal de voz primeiro! ⚠️")
-    serverQueue.songs = [];
-    serverQueue.connection.dispatcher.end();
+      return message.channel.send(`⚠️ Por favor ${message.author}, entre em um **canal de voz** primeiro! ⚠️`);
+    else {
+      serverQueue.songs = [];
+      serverQueue.connection.dispatcher.end();
+      return message.channel.send("⛔️ Parando de reproduzir qualquer musica atual e limpando a lista de requisições! ⛔️")
+    }
   }
   function skip(message, serverQueue) {
     if (!message.member.voice.channel)
-      return message.channel.send("⚠️ Você precisa entrar em um canal de voz primeiro!");
+      return message.channel.send(`⚠️ Por favor ${message.author}, entre em um **canal de voz** primeiro! ⚠️`);
     if (!serverQueue)
       return message.channel.send("🔇 Não há músicas para pular! 🔇");
     serverQueue.connection.dispatcher.end();
   }
   function Queue(serverQueue) {
-    if (!serverQueue.connection)
+    let vc = message.member.voice.channel;
+    if (!vc) {
+      return message.channel.send(`⚠️ Por favor ${message.author}, entre em um **canal de voz** primeiro! ⚠️`);
+    }
+    if (!serverQueue) {
       return message.channel.send("🔇 Não há músicas tocando! 🔇");
-    if (!message.member.voice.channel)
-      return message.channel.send("⚠️ Você não está em um canal de voz! ⚠️")
+    }
+
 
     let nowPlaying = serverQueue.songs[0];
     let qMsg = `⏯ **Tocando agora:** _${nowPlaying.title}_\n\n`
 
-    
+
     for (var i = 1; i < serverQueue.songs.length; i++) {
       qMsg += `**[${i}]** ${serverQueue.songs[i].title}\n`
     }
