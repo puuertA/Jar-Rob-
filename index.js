@@ -1,20 +1,25 @@
-const express = require('express');
-const app = express();
-app.get("/", (request, response) => {
+// const express = require('express');
+// const app = express();
+/* app.get("/", (request, response) => {
   const ping = new Date();
   ping.setHours(ping.getHours() - 3);
   console.log(`Ping recebido às ${ping.getUTCHours()}:${ping.getUTCMinutes()}:${ping.getUTCSeconds()}`);
   response.sendStatus(200);
-});
-app.listen(process.env.PORT); // Recebe solicitações que o deixa online
+}); */
+// app.listen(process.env.PORT); // Recebe solicitações que o deixa online
 
 const Discord = require("discord.js"); //Conexão com a livraria Discord.js
-const client = new Discord.Client(); //Criação de um novo Client
+const { Client, GatewayIntentBits } = require('discord.js');
+const client = new Discord.Client({intents: [GatewayIntentBits.Guilds] }); //Criação de um novo Client
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
 
 require('events').EventEmitter.defaultMaxListeners = 0
+
+var mongoose = require('mongoose');
+// set Promise provider to bluebird
+mongoose.Promise = require('bluebird');
 
 client.on('guildMemberAdd', member => {
   member.send("Leia as regras, seja sussa e diverta-se!\nLembre-se de utilizar j!help no servidor para ver os comandos disponíveis do bot!");
@@ -53,7 +58,7 @@ client.on("ready", () => {
   }), 1000 * 60);
   client.user
     .setStatus("dnd")
-    .catch(console.error);
+    //.catch(console.error);
   console.log("Status: Online")
 });
 client.on('message', message => {
@@ -201,6 +206,6 @@ client.on("message", async (message) => {
 })
 
 
-client.login("ODA4MTEyNDYyNDczNzIzOTQ0.YCBzYQ.i-MAnMHWoNpx_EKBsju82pjji9A")
+client.login(config.token);
 
 
