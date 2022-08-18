@@ -80,9 +80,9 @@ client.on("ready", () => {
 
 client.on("message", async (message) => {
   const prefix = `${config.prefix}`;
- 
+
   const serverQueue = queue.get(message.guild.id);
- 
+
   const args = message.content.slice(prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase();
   switch (command) {
