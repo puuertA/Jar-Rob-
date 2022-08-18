@@ -9,8 +9,9 @@
 // app.listen(process.env.PORT); // Recebe solicitações que o deixa online
 
 const Discord = require("discord.js"); //Conexão com a livraria Discord.js
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Discord.Client({intents: [GatewayIntentBits.Guilds] }); //Criação de um novo Client
+const client = new Discord.Client(); 
+// const { Client, GatewayIntentBits } = require('discord.js');
+// const client = new Discord.Client({intents: [GatewayIntentBits.Guilds] }); //Criação de um novo Client
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
@@ -58,7 +59,7 @@ client.on("ready", () => {
   }), 1000 * 60);
   client.user
     .setStatus("dnd")
-    //.catch(console.error);
+    .catch(console.error);
   console.log("Status: Online")
 });
 client.on('message', message => {
