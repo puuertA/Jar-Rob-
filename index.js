@@ -201,6 +201,6 @@ client.on("message", async (message) => {
 })
 
 
-client.login("ODA4MTEyNDYyNDczNzIzOTQ0.YCBzYQ.i-MAnMHWoNpx_EKBsju82pjji9A")
+client.login("")
 
 
